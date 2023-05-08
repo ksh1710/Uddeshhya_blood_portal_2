@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Uddeshhya blood portal</string>
+    <string-array name="bloodGroup">
+        <item>Blood Group</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>0+</item>
+        <item>O-</item>
+    </string-array>
+
+    <string-array name="Branch">
+        <item>Branch</item>
+        <item>CSE</item>
+        <item>CS</item>
+        <item>CSE(AI)</item>
+        <item>CSE(AIML)</item>
+        <item>CSIT</item>
+        <item>IT</item>
+        <item>ECE</item>
+        <item>EN</item>
+        <item>ME</item>
+        <item>B.pharma</item>
+        <item>MCA</item>
+        <item>CIVIL</item>
+        <item>D.pharma</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

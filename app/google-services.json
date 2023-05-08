@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "64963325011",
+    "project_id": "uddeshhya-blood-portal",
+    "storage_bucket": "uddeshhya-blood-portal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:64963325011:android:01b9abf72cfa9c3102aaa6",
+        "android_client_info": {
+          "package_name": "com.example.uddeshhyabloodportal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "64963325011-2s1icphps0pvh4iccg7pfdpa66k8cvh4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTDB6140l27Q3R_IYAcg4pupFTvu6rBDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "64963325011-2s1icphps0pvh4iccg7pfdpa66k8cvh4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
