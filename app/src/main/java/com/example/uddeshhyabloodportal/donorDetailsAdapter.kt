@@ -6,9 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.uddeshhyabloodportal.models.Donor
 import com.example.uddeshhyabloodportal.models.Donors
 
-class donorDetailsAdapter(private val donorDetails: ArrayList<Donors?>) :RecyclerView.Adapter<donorDetailsAdapter.myViewHolder>() {
+class donorDetailsAdapter(private val donorDetails: ArrayList<Donor?> ) :RecyclerView.Adapter<donorDetailsAdapter.myViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
         val donorDetail = LayoutInflater.from(parent.context).inflate(R.layout.donor_details,parent,false)
@@ -18,9 +19,9 @@ class donorDetailsAdapter(private val donorDetails: ArrayList<Donors?>) :Recycle
 
     override fun onBindViewHolder(holder: myViewHolder, position: Int) {
             val currentItem = donorDetails[position]
-            holder.name.text = currentItem?.listOfDonors?.get(position)?.fullName
-            holder.mobileNo.text = currentItem?.listOfDonors?.get(position)?.mobileNo
-            holder.email.text = currentItem?.listOfDonors?.get(position)?.email
+            holder.name.text = currentItem?.fullName
+            holder.mobileNo.text = currentItem?.mobileNo
+            holder.email.text = currentItem?.email
     }
 //    ?.listOfDonors?.get(position)?
     override fun getItemCount(): Int {

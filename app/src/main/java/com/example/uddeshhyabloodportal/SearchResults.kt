@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.uddeshhyabloodportal.databinding.ActivityMainBinding
+import com.example.uddeshhyabloodportal.models.Donor
 import com.example.uddeshhyabloodportal.models.Donors
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -43,15 +44,16 @@ class SearchResults : AppCompatActivity() {
 //        }
 
 //        Log.d("idk",listdata.toString())
-        val donorArraylist: ArrayList<Donors?> = arrayListOf<Donors?>(donorList)
+      //  val donorArraylist: ArrayList<Donors?> = arrayListOf<Donors?>(donorList)
+        val donorArraylist: ArrayList<Donor?>? = donorList.listOfDonors
         Log.d("mess2", donorArraylist.toString())
 
         donorRecyclerView = mainxml.donorList
         donorRecyclerView.layoutManager = LinearLayoutManager(this)
-        donorRecyclerView.adapter = donorDetailsAdapter(donorArraylist)
+        donorRecyclerView.adapter = donorDetailsAdapter(donorArraylist!!)
 //        mainxml.nameTv.text = donorList?.listOfDonors?.get(0)?.fullName
 //        mainxml.emailTv.text = donorList?.listOfDonors?.get(0)?.email
-//        mainxml.mobileTv.text = donorList?.listOfDonors?.get(0)?.mobileNo
+//        mainxml.mobileTv.text = donorList?.listOfDonors?.get(0)?.mobileNoo
 
 
     }
