@@ -25,8 +25,8 @@ class SearchResults : AppCompatActivity() {
 
         val json = this.intent.getStringExtra("json")
         val donorList = Gson().fromJson(json, Donors::class.java)
-        val donorjson = Gson().toJson(donorList)
-        Log.d("mess1",donorjson.toString())
+//        val donorjson = Gson().toJson(donorList)
+//        Log.d("mess1",donorjson.toString())
 
 //        for (user in userArray) {
 //            System.out.println(user)
@@ -46,7 +46,7 @@ class SearchResults : AppCompatActivity() {
 //        Log.d("idk",listdata.toString())
       //  val donorArraylist: ArrayList<Donors?> = arrayListOf<Donors?>(donorList)
         val donorArraylist: ArrayList<Donor?>? = donorList.listOfDonors
-        Log.d("mess2", donorArraylist.toString())
+//        Log.d("mess2", donorArraylist.toString())
 
         donorRecyclerView = mainxml.donorList
         donorRecyclerView.layoutManager = LinearLayoutManager(this)

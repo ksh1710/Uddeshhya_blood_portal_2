@@ -38,7 +38,8 @@ class searchDonor : AppCompatActivity() {
     }
 
     private /*suspend*/ fun readData(bloodgrouptext: String) {
-        database=FirebaseDatabase.getInstance().getReference("DonorsV2")
+//        database=FirebaseDatabase.getInstance().getReference("DonorsV2")
+        database=FirebaseDatabase.getInstance().getReference("BloodDonors")
         database.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot.hasChild(bloodgrouptext))

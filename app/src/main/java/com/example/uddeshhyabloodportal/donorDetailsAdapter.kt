@@ -18,10 +18,17 @@ class donorDetailsAdapter(private val donorDetails: ArrayList<Donor?> ) :Recycle
     }
 
     override fun onBindViewHolder(holder: myViewHolder, position: Int) {
-            val currentItem = donorDetails[position]
-            holder.name.text = currentItem?.fullName
-            holder.mobileNo.text = currentItem?.mobileNo
-            holder.email.text = currentItem?.email
+        val currentItem = donorDetails[position]
+        holder.name.text = currentItem?.fullName
+        holder.mobileNo.text = currentItem?.mobileNo
+        holder.email.text = currentItem?.email
+        holder.altMobile.text = currentItem?.altmobileNo
+        holder.designation.text = currentItem?.designation
+        if (currentItem?.year == "Year Of Study") {
+            holder.year.text = "-"
+        } else {
+            holder.year.text = currentItem?.year
+        }
     }
 //    ?.listOfDonors?.get(position)?
     override fun getItemCount(): Int {
@@ -33,7 +40,9 @@ class donorDetailsAdapter(private val donorDetails: ArrayList<Donor?> ) :Recycle
         val name : TextView=donorView.findViewById(R.id.nameTv)
         val mobileNo: TextView=donorView.findViewById(R.id.mobileTv)
         val email: TextView = donorView.findViewById(R.id.emailTv)
-
+        val altMobile: TextView = donorView.findViewById(R.id.alternateTv)
+        val designation: TextView = donorView.findViewById(R.id.designationTv)
+        val year: TextView = donorView.findViewById(R.id.yearTv)
     }
 
 }
