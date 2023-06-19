@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "64963325011",
+    "firebase_url": "https://uddeshhya-blood-portal-default-rtdb.firebaseio.com",
     "project_id": "uddeshhya-blood-portal",
     "storage_bucket": "uddeshhya-blood-portal.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "64963325011-k4herqk6dk9jubcsp2bsodq3gmeks95e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.uddeshhyabloodportal",
+            "certificate_hash": "ef2253d0041090c89190e8bdc85df83a1ac9a1d8"
+          }
+        },
         {
           "client_id": "64963325011-2s1icphps0pvh4iccg7pfdpa66k8cvh4.apps.googleusercontent.com",
           "client_type": 3

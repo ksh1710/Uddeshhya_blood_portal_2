@@ -13,6 +13,7 @@ data class Donor(
     val pincode: String? = "",
     val gender: String? = "",
     val altmobileNo: String? = "",
-    val hasChronicDisease: String? = ""
+    val hasChronicDisease: String? = "",
+    val lastDonatedOn:String? = ""
 )
 

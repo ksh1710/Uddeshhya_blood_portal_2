@@ -1,22 +1,22 @@
 package com.example.uddeshhyabloodportal
 
-import android.app.Activity
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.uddeshhyabloodportal.models.Donor
-import com.example.uddeshhyabloodportal.models.Donors
-import kotlinx.coroutines.NonDisposableHandle.parent
+import com.google.firebase.database.FirebaseDatabase
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+
 
 class donorDetailsAdapter(private val donorDetails: ArrayList<Donor?>) :
     RecyclerView.Adapter<donorDetailsAdapter.myViewHolder>() {
@@ -35,12 +35,45 @@ class donorDetailsAdapter(private val donorDetails: ArrayList<Donor?>) :
         holder.email.text = currentItem?.email
         holder.altMobile.text = currentItem?.altmobileNo
         holder.occupation.text = currentItem?.occupation
-//        if (currentItem?.year == "") {
-//            holder.year.text = "-"
-//        } else {
-//            holder.year.text = currentItem?.year
-//        }
         holder.city.text = currentItem?.city
+        holder.lastDonatedTV.text = currentItem?.lastDonatedOn
+        if (currentItem?.lastDonatedOn == "") {
+            holder.lastDonatedTV.text = "Not Donated Yet"
+        }
+
+
+
+//        val context: Context
+        holder.setDateBtn.setOnClickListener {
+
+            val myCalender = Calendar.getInstance()
+            val datePicker = DatePickerDialog.OnDateSetListener { view, year, month, day ->
+                myCalender.set(Calendar.YEAR, year)
+                myCalender.set(Calendar.MONTH, month)
+                myCalender.set(Calendar.DAY_OF_MONTH, day)
+//            updateLabel(myCalender)
+                val myFormat = "dd-MM-yyyy"
+                val sdf = SimpleDateFormat(myFormat, Locale.UK)
+                val lastDonatedOn = sdf.format(myCalender.time)
+                val dbdef = FirebaseDatabase.getInstance().getReference("BloodDonors")
+                    .child(currentItem?.bloodGroup.toString())
+                    .child(currentItem?.mobileNo.toString())
+                val updates: MutableMap<String, Any> = HashMap()
+                updates["lastDonatedOn"] = lastDonatedOn
+                dbdef.updateChildren(updates)
+            }
+            DatePickerDialog(
+                it.context,
+                datePicker,
+                myCalender.get(Calendar.YEAR),
+                myCalender.get(Calendar.MONTH),
+                myCalender.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
+
+
+
+
 
         holder.callBtn.setOnClickListener {
             val intent: Intent = Intent(
@@ -50,6 +83,11 @@ class donorDetailsAdapter(private val donorDetails: ArrayList<Donor?>) :
             holder.callBtn.context.startActivity(intent)
         }
     }
+//
+//    private fun updateLabel(myCalender: Calendar) {
+//
+//
+//    }
 
     override fun getItemCount(): Int {
         return donorDetails.size
@@ -64,6 +102,10 @@ class donorDetailsAdapter(private val donorDetails: ArrayList<Donor?>) :
         val occupation: TextView = donorView.findViewById(R.id.occupationTv)
         val city: TextView = donorView.findViewById(R.id.cityTv)
         val callBtn: ImageView = donorView.findViewById(R.id.callBtn)
+        val lastDonatedTV: TextView = donorView.findViewById(R.id.lastDonatedTv)
+        val setDateBtn: Button = donorView.findViewById(R.id.setDateBtn)
+
+
     }
 
 }

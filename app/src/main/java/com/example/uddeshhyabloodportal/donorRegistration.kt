@@ -8,8 +8,10 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.uddeshhyabloodportal.databinding.ActivityDonorRegistrationBinding
 import com.example.uddeshhyabloodportal.models.Donor
+import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
+import com.google.firebase.appcheck.FirebaseAppCheck
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
@@ -40,6 +42,11 @@ class donorRegistration : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDonorRegistrationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+//        FirebaseApp.initializeApp(/*context=*/this)
+//        val firebaseAppCheck = FirebaseAppCheck.getInstance()
+//        firebaseAppCheck.installAppCheckProviderFactory(
+//            PlayIntegrityAppCheckProviderFactory.getInstance()
+//        )
 
 
         auth = Firebase.auth
@@ -60,24 +67,6 @@ class donorRegistration : AppCompatActivity() {
 //        binding.branchSpinner.setAdapter(branchAdapter)
         binding.spinnerBloodGroup.setAdapter(bloodgroupAdapter)
         binding.citySpinner.setAdapter(cityAdapter)
-
-//        binding.yearSpinner.setAdapter(yearAdapter)
-//
-//        binding.inputFieldSpinner.setOnItemClickListener { adapterView, view, i, l ->
-//            if (binding.inputFieldSpinner.text.toString() == "Faculty") {
-//                binding.yearSpinnerText.isVisible = false
-////                binding.libraryId.hint = "faculty id"
-//                binding.branchSpinner.isVisible = false
-//                binding.branchTextInpt.isVisible = false
-//            } else if (binding.inputFieldSpinner.text.toString() == "Student") {
-//                binding.yearSpinnerText.isVisible = true
-////                binding.libraryId.hint = "student library id"
-//                binding.branchSpinner.isVisible = true
-//                binding.branchTextInpt.isVisible = true
-//            } else if (binding.inputFieldSpinner.text.toString() == "Alumni") {
-//                Toast.makeText(this, "HEllo Alumni", Toast.LENGTH_SHORT).show()
-//            }
-//        }
 
 
         fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
@@ -224,8 +213,8 @@ class donorRegistration : AppCompatActivity() {
 //                                    Toast.makeText(this, "authenticated", Toast.LENGTH_SHORT).show()
                                     binding.emailSendotp.setTextColor(Color.parseColor("#00FF00"))
                                     binding.emailSendotp.text = "success!!"
-                                    FirebaseAuth.getInstance().currentUser?.delete()
-                                } else {
+//                                    FirebaseAuth.getInstance().currentUser?.delete()
+                                }else {
                                     Toast.makeText(
                                         this,
                                         "please verify your email",
@@ -235,18 +224,16 @@ class donorRegistration : AppCompatActivity() {
                             }.addOnFailureListener {
                                 Toast.makeText(this, "errrrrrorrrrr!!!!", Toast.LENGTH_SHORT).show()
                             }
-                        }
+                        }else if(binding.emailSendotp.text == "success!!"){
+                        Toast.makeText(this, "email already verified", Toast.LENGTH_SHORT).show()
+                    }
                     }
             }
         }
 
-
-
-
-
-
-
         binding.registerButton.setOnClickListener {
+
+            FirebaseAuth.getInstance().currentUser?.delete()
             Log.d("qwe", "test 1")
             val fullname = binding.fullName.text.toString()
             val occupationSpinner = binding.inputFieldSpinner.text.toString()
@@ -265,14 +252,7 @@ class donorRegistration : AppCompatActivity() {
                 cbCheck = "Yes"
             }
 
-
-//            if (binding.emailSendotp.text != "success!!" && binding.mobileVerifyOtp.text != "Verified") {
-//                Toast.makeText(this, "please verify mobile and email first", Toast.LENGTH_SHORT)
-//                    .show()
-//            } else if (fullname.isEmpty() || occupationSpinner.isEmpty() || age.isEmpty() || phone.isEmpty() || email.isEmpty() || gender.isEmpty() || city.isEmpty() || bloodgroup.isEmpty() || pincode.isEmpty()) {
-//                Toast.makeText(this, "please fill all the fields", Toast.LENGTH_SHORT).show()
-//            } else
-            if (fullname.isEmpty() || occupationSpinner.isEmpty() || age.isEmpty() || phone.isEmpty() || email.isEmpty() || gender.isEmpty() || city.isEmpty() || bloodgroup.isEmpty() || pincode.isEmpty()) {
+            if (fullname.isBlank() || occupationSpinner.isBlank() || age.isBlank() || phone.isBlank() || email.isBlank() || gender.isBlank() || city.isBlank() || bloodgroup.isBlank() || pincode.isBlank()) {
                 Toast.makeText(
                     this,
                     "please fill all the fields",
@@ -288,11 +268,13 @@ class donorRegistration : AppCompatActivity() {
             } else if (binding.mobileVerifyOtp.text != "Verified") {
                 Toast.makeText(this, "verify mobile first", Toast.LENGTH_SHORT).show()
             } else {
+//                var flag  = true
                 FirebaseDatabase.getInstance().getReference("BloodDonors").child(bloodgroup)
                     .addValueEventListener(
                         object : ValueEventListener {
                             override fun onDataChange(snapshot: DataSnapshot) {
                                 if (snapshot.hasChild(binding.editTextPhone.text.toString())) {
+//                                if (snapshot.hasChild(binding.editTextPhone.text.toString())&&flag) {
 
                                     Toast.makeText(
                                         this@donorRegistration,
@@ -322,10 +304,10 @@ class donorRegistration : AppCompatActivity() {
                                             binding.editTextPhone.text.clear()
                                             binding.editTextEmailAddress.text.clear()
                                             binding.Age.text.clear()
-                                            binding.citySpinner.setSelection(0)
-                                            binding.spinnerBloodGroup.setSelection(0)
-                                            binding.pincodeInput.setSelection(0)
-                                            binding.genderSpinner.setSelection(0)
+                                            binding.citySpinner.text.clear()
+                                            binding.spinnerBloodGroup.text.clear()
+                                            binding.pincodeInput.text.clear()
+                                            binding.genderSpinner.text.clear()
                                             binding.alternateNumber.text.clear()
                                             binding.otpTextfield.text.clear()
                                             binding.chronicCB.isSelected = false
@@ -335,6 +317,7 @@ class donorRegistration : AppCompatActivity() {
                                                 Toast.LENGTH_SHORT
                                             ).show()
                                             finish()
+//                                            flag = false
                                         }.addOnFailureListener {
                                             Toast.makeText(
                                                 this@donorRegistration,

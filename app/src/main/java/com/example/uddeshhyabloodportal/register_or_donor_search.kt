@@ -43,6 +43,7 @@ class register_or_donor_search : AppCompatActivity() {
             startActivity(intent)
         }
 
+        member.paintFlags=Paint.UNDERLINE_TEXT_FLAG
         member.setOnClickListener {
             val intent = Intent(this,memberLogin::class.java)
             startActivity(intent)

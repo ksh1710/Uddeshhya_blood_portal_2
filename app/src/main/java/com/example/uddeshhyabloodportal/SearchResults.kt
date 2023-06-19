@@ -1,5 +1,6 @@
 package com.example.uddeshhyabloodportal
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,9 @@ import java.util.Objects
 class SearchResults : AppCompatActivity() {
 
     private lateinit var donorRecyclerView: RecyclerView
+    private lateinit var donorArraylist: ArrayList<Donor?>
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,16 +49,26 @@ class SearchResults : AppCompatActivity() {
 
 //        Log.d("idk",listdata.toString())
       //  val donorArraylist: ArrayList<Donors?> = arrayListOf<Donors?>(donorList)
-        val donorArraylist: ArrayList<Donor?>? = donorList.listOfDonors
+        donorArraylist = donorList.listOfDonors!!
 //        Log.d("mess2", donorArraylist.toString())
 
         donorRecyclerView = mainxml.donorList
         donorRecyclerView.layoutManager = LinearLayoutManager(this)
-        donorRecyclerView.adapter = donorDetailsAdapter(donorArraylist!!)
+        donorRecyclerView.adapter = donorDetailsAdapter(donorArraylist)
 //        mainxml.nameTv.text = donorList?.listOfDonors?.get(0)?.fullName
 //        mainxml.emailTv.text = donorList?.listOfDonors?.get(0)?.email
 //        mainxml.mobileTv.text = donorList?.listOfDonors?.get(0)?.mobileNoo
 
 
     }
+
+
+    @SuppressLint("NotifyDataSetChanged")
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        super.onBackPressed()
+        donorArraylist.clear()
+        donorRecyclerView.adapter?.notifyDataSetChanged()
+    }
+
 }
