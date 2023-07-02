@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:backgroundTint="@color/white"
+    android:orientation="vertical"
+    android:layout_marginBottom="25dp"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="4"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/question"
+        android:background="@color/white"
+        android:layout_width="0dp"
+        android:layout_weight="4"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="How much blooooooooooooooooooooooooooooooooooooooooooooooooooood is taken?"
+        tools:layout_editor_absoluteX="77dp"
+        tools:layout_editor_absoluteY="17dp"/>
+<ImageView
+    android:layout_width="35dp"
+    android:id="@+id/imgUPDOWN"
+    android:src="@drawable/arrowdown"
+    android:background="@color/white"
+    android:layout_height="40dp">
+
+</ImageView>
+</LinearLayout>
+
+    <TextView
+        android:id="@+id/answer"
+        android:layout_width="match_parent"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:background="#F1F0F0"
+        android:layout_marginBottom="5dp"
+        android:text=" For a whole blood donation, approximately 0.5 L of blood is collected"
+        tools:layout_editor_absoluteX="77dp"
+        tools:layout_editor_absoluteY="17dp"/>
+    />
+</LinearLayout>
+
+</androidx.cardview.widget.CardView>

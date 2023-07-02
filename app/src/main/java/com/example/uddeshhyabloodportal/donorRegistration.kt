@@ -1,11 +1,13 @@
 package com.example.uddeshhyabloodportal
 
 import android.graphics.Color
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.example.uddeshhyabloodportal.databinding.ActivityDonorRegistrationBinding
 import com.example.uddeshhyabloodportal.models.Donor
 import com.google.firebase.FirebaseApp
@@ -27,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.snapshots
 import com.google.firebase.ktx.Firebase
+import java.util.concurrent.Future
 import java.util.concurrent.TimeUnit
 
 
@@ -42,29 +45,19 @@ class donorRegistration : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDonorRegistrationBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        FirebaseApp.initializeApp(/*context=*/this)
-//        val firebaseAppCheck = FirebaseAppCheck.getInstance()
-//        firebaseAppCheck.installAppCheckProviderFactory(
-//            PlayIntegrityAppCheckProviderFactory.getInstance()
-//        )
 
 
         auth = Firebase.auth
         val cityArray = resources.getStringArray(R.array.city)
         val occupationArray = resources.getStringArray(R.array.occupation)
         val genderArray = resources.getStringArray(R.array.gender)
-//        val branchArray = resources.getStringArray(R.array.Branch)
-//        val yearArray = resources.getStringArray(R.array.year)
         val cityAdapter = ArrayAdapter(this, R.layout.spinner_item, cityArray)
         val bloodgroupArray = resources.getStringArray(R.array.bloodGroup)
         val bloodgroupAdapter = ArrayAdapter(this, R.layout.spinner_item, bloodgroupArray)
         val genderAdapter = ArrayAdapter(this, R.layout.spinner_item, genderArray)
-//        val branchAdapter = ArrayAdapter(this, R.layout.spinner_item, branchArray)
         val occupationAdapter = ArrayAdapter(this, R.layout.spinner_item, occupationArray)
-//        val yearAdapter = ArrayAdapter(this, R.layout.spinner_item, yearArray)
         binding.inputFieldSpinner.setAdapter(occupationAdapter)
         binding.genderSpinner.setAdapter(genderAdapter)
-//        binding.branchSpinner.setAdapter(branchAdapter)
         binding.spinnerBloodGroup.setAdapter(bloodgroupAdapter)
         binding.citySpinner.setAdapter(cityAdapter)
 
@@ -72,6 +65,10 @@ class donorRegistration : AppCompatActivity() {
         fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
             FirebaseAuth.getInstance().signInWithCredential(credential)
                 .addOnCompleteListener { task ->
+                    binding.mobileVerifyOtp.isVisible = true
+                    binding.verifyotpProgressBar.isVisible = false
+                    binding.sendOtpProgressBar.isVisible = false
+                    binding.mobileSendOtp.isVisible = true
                     if (task.isSuccessful) {
                         binding.mobileVerifyOtp.text = "Verified"
                         binding.mobileVerifyOtp.setTextColor(Color.parseColor("#00FF00"))
@@ -89,7 +86,13 @@ class donorRegistration : AppCompatActivity() {
                         )
                             .show()
                     }
+                }.addOnFailureListener {
+                    Toast.makeText(this, "an error occured", Toast.LENGTH_SHORT).show()
+                    binding.mobileVerifyOtp.isVisible = true
+                    binding.verifyotpProgressBar.isVisible = false
+
                 }
+
         }
 
         binding.mobileSendOtp.setOnClickListener {
@@ -98,8 +101,7 @@ class donorRegistration : AppCompatActivity() {
 
                 override fun onVerificationCompleted(credential: PhoneAuthCredential) {
                     signInWithPhoneAuthCredential(credential)
-                    Toast.makeText(applicationContext, "idfc", Toast.LENGTH_SHORT)
-                        .show()
+
                 }
 
                 override fun onVerificationFailed(e: FirebaseException) {
@@ -110,14 +112,32 @@ class donorRegistration : AppCompatActivity() {
                             "invalid mobile number",
                             Toast.LENGTH_SHORT
                         ).show()
+                        binding.mobileSendOtp.isVisible = true
+                        binding.sendOtpProgressBar.isVisible = false
+
+                        binding.mobileVerifyOtp.isVisible = true
+                        binding.verifyotpProgressBar.isVisible = false
+
                     } else if (e is FirebaseTooManyRequestsException) {
                         Toast.makeText(
                             applicationContext,
                             "too many requests...try later!!",
                             Toast.LENGTH_SHORT
-                        )
+                        ).show()
+                        binding.mobileSendOtp.isVisible = true
+                        binding.sendOtpProgressBar.isVisible = false
+
+                    } else {
+                        Toast.makeText(applicationContext, "an error eoccured", Toast.LENGTH_SHORT)
                             .show()
+                        binding.mobileSendOtp.isVisible = true
+                        binding.sendOtpProgressBar.isVisible = false
+
+                        binding.mobileVerifyOtp.isVisible = true
+                        binding.verifyotpProgressBar.isVisible = false
+
                     }
+
 
                 }
 
@@ -132,11 +152,16 @@ class donorRegistration : AppCompatActivity() {
                         "code sent successfully",
                         Toast.LENGTH_SHORT
                     ).show()
+
+                    binding.sendOtpProgressBar.isVisible = false
+                    binding.mobileSendOtp.isVisible = true
                 }
 
             }
-            if (phone.trim().isNotEmpty()) {
+            if (phone.trim().isNotBlank()) {
                 if (phone.trim().length == 10) {
+                    binding.sendOtpProgressBar.isVisible = true
+                    binding.mobileSendOtp.isVisible = false
 
                     val options = PhoneAuthOptions.newBuilder(FirebaseAuth.getInstance())
                         .setPhoneNumber("+91$phone") // Phone number to verify
@@ -155,7 +180,7 @@ class donorRegistration : AppCompatActivity() {
             } else {
                 Toast.makeText(
                     applicationContext,
-                    "enter mobile NUmber",
+                    "enter mobile number",
                     Toast.LENGTH_SHORT
                 )
                     .show()
@@ -168,6 +193,8 @@ class donorRegistration : AppCompatActivity() {
         binding.mobileVerifyOtp.setOnClickListener {
             if (binding.otpTextfield.text.toString().isNotEmpty()) {
                 if (binding.otpTextfield.text.toString().length == 6) {
+                    binding.mobileVerifyOtp.isVisible = false
+                    binding.verifyotpProgressBar.isVisible = true
                     val phoneauthCredential: PhoneAuthCredential =
                         PhoneAuthProvider.getCredential(
                             OTP,
@@ -189,45 +216,73 @@ class donorRegistration : AppCompatActivity() {
             }
         }
 
+        binding.emailSendotp.setOnClickListener {
+            binding.emailProgressBar.isVisible = true
+            binding.emailSendotp.isVisible = false
+            if (binding.editTextEmailAddress.text.isBlank()) {
+                Toast.makeText(this, "please enter your email id", Toast.LENGTH_SHORT).show()
+                binding.emailProgressBar.isVisible = false
+                binding.emailSendotp.isVisible = true
+            } else if (binding.editTextEmailAddress.text.isNotBlank()) {
+                if (binding.emailSendotp.text.toString() == "send email") {
+                    val pass = "xxxxxxxx"
+                    val email = binding.editTextEmailAddress.text.toString().trim()
+                    auth.createUserWithEmailAndPassword(email, pass)
+                        .addOnCompleteListener(this) { task ->
 
-
-        if (binding.emailSendotp.text.toString() == "send email") {
-            binding.emailSendotp.setOnClickListener {
-                val pass = "xxxxxxxx"
-                val email = binding.editTextEmailAddress.text.toString().trim()
-                auth.createUserWithEmailAndPassword(email, pass)
-                    .addOnCompleteListener(this) { task ->
-
-                        if (task.isSuccessful) {
-                            auth.currentUser?.sendEmailVerification()?.addOnSuccessListener {
-                                Toast.makeText(
-                                    this,
-                                    "verification link sent successfully",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                                binding.emailSendotp.text = "verified??"
-                            }
-                        } else if (binding.emailSendotp.text == "verified??") {
-                            auth.signInWithEmailAndPassword(email, pass).addOnSuccessListener {
-                                if (FirebaseAuth.getInstance().currentUser?.isEmailVerified == true) {
-//                                    Toast.makeText(this, "authenticated", Toast.LENGTH_SHORT).show()
-                                    binding.emailSendotp.setTextColor(Color.parseColor("#00FF00"))
-                                    binding.emailSendotp.text = "success!!"
-//                                    FirebaseAuth.getInstance().currentUser?.delete()
-                                }else {
+                            if (task.isSuccessful) {
+                                auth.currentUser?.sendEmailVerification()?.addOnSuccessListener {
                                     Toast.makeText(
                                         this,
-                                        "please verify your email",
+                                        "verification link sent successfully",
                                         Toast.LENGTH_SHORT
                                     ).show()
+                                    binding.emailProgressBar.isVisible = false
+                                    binding.emailSendotp.isVisible = true
+                                    binding.emailSendotp.text = "verified??"
                                 }
-                            }.addOnFailureListener {
-                                Toast.makeText(this, "errrrrrorrrrr!!!!", Toast.LENGTH_SHORT).show()
                             }
-                        }else if(binding.emailSendotp.text == "success!!"){
-                        Toast.makeText(this, "email already verified", Toast.LENGTH_SHORT).show()
+                        }
+                } else if (binding.emailSendotp.text == "verified??") {
+                    val pass = "xxxxxxxx"
+                    val email = binding.editTextEmailAddress.text.toString().trim()
+                    auth.signInWithEmailAndPassword(email, pass).addOnSuccessListener {
+                        if (FirebaseAuth.getInstance().currentUser?.isEmailVerified == true) {
+                            binding.emailSendotp.setTextColor(
+                                Color.parseColor(
+                                    "#00FF00"
+                                )
+                            )
+                            binding.emailSendotp.text = "success!!"
+                            binding.emailProgressBar.isVisible = false
+                            binding.emailSendotp.isVisible = true
+
+                            FirebaseAuth.getInstance().currentUser?.delete()
+                        } else {
+                            Toast.makeText(
+                                this,
+                                "please verify your email",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            binding.emailProgressBar.isVisible = false
+                            binding.emailSendotp.isVisible = true
+
+                        }
+                    }.addOnFailureListener {
+                        Toast.makeText(this, "error!!", Toast.LENGTH_SHORT)
+                            .show()
+                        binding.emailProgressBar.isVisible = false
+                        binding.emailSendotp.isVisible = true
+
                     }
-                    }
+                } else if (binding.emailSendotp.text == "success!!") {
+                    Toast.makeText(this, "email already verified", Toast.LENGTH_SHORT)
+                        .show()
+                    binding.emailProgressBar.isVisible = false
+                    binding.emailSendotp.isVisible = true
+
+                }
+
             }
         }
 
@@ -245,14 +300,20 @@ class donorRegistration : AppCompatActivity() {
             val city = binding.citySpinner.text.toString()
             val bloodgroup = binding.spinnerBloodGroup.text.toString()
             val pincode = binding.pincodeInput.text.toString()
-            val cbCheck: String
-            if (binding.chronicCB.isChecked) {
-                cbCheck = "No"
+            val chronicCbCheck: String
+            val ageweightCB: String
+            if (binding.AgeWeightCheck.isChecked) {
+                ageweightCB = "Yes"
             } else {
-                cbCheck = "Yes"
+                ageweightCB = "No"
+            }
+            if (binding.chronicCB.isChecked) {
+                chronicCbCheck = "No"
+            } else {
+                chronicCbCheck = "Yes"
             }
 
-            if (fullname.isBlank() || occupationSpinner.isBlank() || age.isBlank() || phone.isBlank() || email.isBlank() || gender.isBlank() || city.isBlank() || bloodgroup.isBlank() || pincode.isBlank()) {
+            if (fullname.isBlank() || occupationSpinner.isBlank() || age.isBlank() || phone.isBlank() || email.isBlank() || gender.isBlank() || city.isBlank() || bloodgroup.isBlank() || pincode.isBlank() || !binding.AgeWeightCheck.isChecked || !binding.chronicCB.isChecked) {
                 Toast.makeText(
                     this,
                     "please fill all the fields",
@@ -295,7 +356,8 @@ class donorRegistration : AppCompatActivity() {
                                         pincode,
                                         gender,
                                         altmobile,
-                                        cbCheck
+                                        chronicCbCheck,
+                                        ageweightCB
                                     )
                                     database.child(bloodgroup).child(phone)
                                         .setValue(donor)
@@ -311,6 +373,7 @@ class donorRegistration : AppCompatActivity() {
                                             binding.alternateNumber.text.clear()
                                             binding.otpTextfield.text.clear()
                                             binding.chronicCB.isSelected = false
+                                            binding.AgeWeightCheck.isSelected = false
                                             Toast.makeText(
                                                 this@donorRegistration,
                                                 "Successfully Registered",

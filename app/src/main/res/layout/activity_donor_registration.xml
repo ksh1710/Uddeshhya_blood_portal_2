@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".donorRegistration">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="30dp"
+                android:src="@drawable/imgss"
+                app:layout_constraintBottom_toTopOf="@+id/fullName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.060000002"
+                app:layout_constraintVertical_chainStyle="spread_inside" />
+
+            <EditText
+                android:id="@+id/fullName"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textColorHint="#898888"
+                android:hint="full name"
+                android:inputType="text"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/textInputLayout7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout7"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:hint="occupation"
+                app:boxBackgroundColor="@color/white"
+                android:textColorHint="#898888"
+                app:boxStrokeColor="@color/black"
+                app:counterOverflowTextColor="@color/black"
+                app:counterTextColor="@color/black"
+                android:layout_marginBottom="30dp"
+                app:hintTextColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/Age"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fullName">
+
+                <AutoCompleteTextView
+                    android:id="@+id/inputFieldSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:ems="10"
+                    android:inputType="none"
+                    android:textColor="@color/black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <EditText
+                android:layout_marginBottom="30dp"
+                android:id="@+id/Age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter your age"
+                android:textColorHint="#898888"
+
+                android:inputType="number"
+                android:textColor="@color/black"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/black"
+                app:counterOverflowTextColor="@color/black"
+                app:counterTextColor="@color/black"
+                app:hintTextColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout7" />
+
+            <EditText
+                android:id="@+id/editTextPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginBottom="30dp"
+
+                android:hint="mobile no."
+                android:textColorHint="#898888"
+
+                android:inputType="phone"
+                android:textColor="@color/black"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/black"
+                app:counterOverflowTextColor="@color/black"
+                app:counterTextColor="@color/black"
+                app:hintTextColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/otpTextfield"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Age" />
+
+            <TextView
+                android:id="@+id/mobileSendOtp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send OTP"
+                android:textColor="#FF5733"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextPhone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/editTextPhone"
+                app:layout_constraintTop_toTopOf="@+id/editTextPhone" />
+
+            <ProgressBar
+                android:id="@+id/sendOtpProgressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextPhone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/editTextPhone"
+                app:layout_constraintTop_toTopOf="@+id/editTextPhone" />
+
+            <EditText
+                android:id="@+id/otpTextfield"
+                android:layout_width="wrap_content"
+                android:inputType="phone"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:ems="10"
+                android:hint="enter Otp"
+                android:textColor="@color/black"
+                android:textColorHint="#898888"
+                app:hintTextColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/alternateNumber"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+
+            <TextView
+                android:id="@+id/mobileVerifyOtp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="verify OTP"
+                android:textColor="#FF5733"
+                app:layout_constraintBottom_toBottomOf="@+id/otpTextfield"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/otpTextfield"
+                app:layout_constraintTop_toTopOf="@+id/otpTextfield" />
+
+
+            <ProgressBar
+                android:id="@+id/verifyotpProgressBar"
+                style="?android:attr/progressBarStyle"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/otpTextfield"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/otpTextfield"
+                app:layout_constraintTop_toTopOf="@+id/otpTextfield" />
+
+
+            <EditText
+                android:id="@+id/alternateNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:ems="10"
+                android:hint="alternate mobile no."
+                android:inputType="phone"
+                android:textColor="@color/black"
+                android:textColorHint="#898888"
+                app:hintTextColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/editTextEmailAddress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/otpTextfield" />
+
+            <EditText
+                android:id="@+id/editTextEmailAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="email address"
+                android:textColorHint="#898888"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                android:layout_marginBottom="30dp"
+                app:hintTextColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/textInputLayout8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/alternateNumber" />
+
+
+            <TextView
+                android:id="@+id/emailSendotp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="send email"
+                android:textColor="#FF5733"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextEmailAddress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/editTextEmailAddress"
+                app:layout_constraintTop_toTopOf="@+id/editTextEmailAddress" />
+
+            <ProgressBar
+                android:id="@+id/emailProgressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextEmailAddress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/editTextEmailAddress"
+                app:layout_constraintTop_toTopOf="@+id/editTextEmailAddress" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout8"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:hint="gender"
+                app:boxBackgroundColor="@color/white"
+                android:textColorHint="#898888"
+                android:textColor="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:counterOverflowTextColor="@color/black"
+                app:counterTextColor="@color/black"
+                app:hintTextColor="@color/black"
+                android:layout_marginBottom="30dp"
+                app:layout_constraintBottom_toTopOf="@+id/cityInput"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddress">
+
+                <AutoCompleteTextView
+                    android:id="@+id/genderSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"                    android:textColor="@color/black"
+                    android:clickable="true"
+                    android:ems="10"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/cityInput"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:hint="city"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/black"
+                app:counterOverflowTextColor="@color/black"
+                app:counterTextColor="@color/black"
+                app:hintTextColor="@color/black"
+                android:textColorHint="#898888"
+                app:layout_constraintBottom_toTopOf="@+id/pincodeInput"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout8">
+
+                <AutoCompleteTextView
+                    android:id="@+id/citySpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:textColor="@color/black"
+                    android:ems="10"
+                    android:inputType="none" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <EditText
+                android:id="@+id/pincodeInput"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:hint="pincode"
+                android:layout_marginBottom="30dp"
+                android:textColorHint="#898888"
+
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/black"
+                app:counterOverflowTextColor="@color/black"
+                app:counterTextColor="@color/black"
+                android:textColor="@color/black"
+                app:hintTextColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/bloodGroupInput"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cityInput"/>
+
+
+            <!--            <Spinner-->
+            <!--                android:id="@+id/yearSpinner"-->
+            <!--                android:layout_width="203dp"-->
+            <!--                android:layout_height="56dp"-->
+
+            <!--                android:entries="@array/year"-->
+            <!--                tools:layout_editor_absoluteX="104dp"-->
+            <!--                tools:layout_editor_absoluteY="567dp" />-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/bloodGroupInput"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:hint="Blood Group"
+                app:boxBackgroundColor="@color/white"
+                android:layout_marginBottom="30dp"
+                app:boxStrokeColor="@color/black"
+                app:counterOverflowTextColor="@color/black"
+                app:counterTextColor="@color/black"
+                app:hintTextColor="@color/black"
+                android:textColorHint="#898888"
+                app:layout_constraintBottom_toTopOf="@+id/chronicCB"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pincodeInput">
+
+
+                <AutoCompleteTextView
+                    android:id="@+id/spinnerBloodGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:textColor="@color/black"
+                    android:ems="10"
+                    android:inputType="none" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/chronicCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#898888"
+                android:textAlignment="center"
+                android:text="I verify that i am not suffering from any chronic disease(like cancer,diabetes,etc)"
+                app:layout_constraintBottom_toTopOf="@+id/AgeWeightCheck"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bloodGroupInput" />
+
+            <CheckBox
+                android:id="@+id/AgeWeightCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I am above 18 years of age and have body weight more than 50kg"
+                app:layout_constraintBottom_toTopOf="@+id/registerButton"
+                android:textColor="#898888"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="30dp"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chronicCB" />
+
+
+            <Button
+                android:id="@+id/registerButton"
+                android:layout_width="137dp"
+                android:layout_height="44dp"
+                android:backgroundTint="#D21312"
+                android:text="Register"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="30dp"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/AgeWeightCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="25dp"
+    android:layout_marginStart="25dp"
+    android:layout_marginBottom="15dp"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp">
+
+    <!-- <androidx.cardview.widget.CardView-->
+    <!--     android:padding="10dp"-->
+    <!--     android:backgroundTint="@color/design_default_color_secondary"-->
+    <!--     android:layout_margin="20dp"-->
+    <!--     app:cardCornerRadius="10dp"-->
+    <!--     android:layout_width="wrap_content"-->
+    <!--     android:layout_height="wrap_content">-->
+    <!--     -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginVertical="16dp"
+                android:textAlignment="gravity"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name :"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Branch :"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Year :"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Contact :"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/callBtn"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout4"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5">
+
+                <TextView
+                    android:id="@+id/memberName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Kshitiz Agarwal"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/memberBranch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" CSE"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/memberYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 1st"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/memberContact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 7017946250"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+
+            <!--            <LinearLayout-->
+            <!--                android:id="@+id/linearLayout5"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="horizontal"-->
+            <!--                tools:layout_editor_absoluteX="326dp"-->
+            <!--                tools:layout_editor_absoluteY="32dp">-->
+
+            <!--                <ImageView-->
+            <!--                    android:id="@+id/callImgBtn"-->
+            <!--                    android:layout_width="30dp"-->
+            <!--                    android:layout_height="30dp"-->
+            <!--                    android:layout_marginTop="10dp"-->
+            <!--                    android:scaleType="fitCenter"-->
+            <!--                    android:src="@drawable/call" />-->
+
+            <TextView
+                android:id="@+id/callBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Call"
+                android:textColor="#EF4343"
+                android:layout_marginEnd="10dp"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5" />
+
+            <!--            <Button-->
+            <!--                android:id="@+id/callTv"-->
+            <!--                android:textSize="25sp"-->
+            <!--                android:layout_marginTop="7dp"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:textColor="#FF5151"-->
+            <!--                android:backgroundTint="@color/black"-->
+            <!--                android:text=" Call" />-->
+
+            <!--            </LinearLayout>-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

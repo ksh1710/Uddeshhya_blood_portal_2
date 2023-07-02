@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
+    tools:context=".verify_urself_first">
+
+    <EditText
+        android:id="@+id/userPhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="mobile no."
+        android:inputType="phone"
+        android:textColor="@color/black"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeColor="@color/black"
+        app:counterOverflowTextColor="@color/black"
+        app:counterTextColor="@color/black"
+        app:hintTextColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/otpTextfield"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userName" />
+
+    <TextView
+        android:id="@+id/userVerifyOtp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="verify OTP"
+        android:textColor="#FF5733"
+        app:layout_constraintBottom_toBottomOf="@+id/otpTextfield"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/otpTextfield"
+        app:layout_constraintTop_toTopOf="@+id/otpTextfield" />
+
+
+    <ProgressBar
+        android:id="@+id/verifyotpProgressBar"
+        android:visibility="invisible"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/otpTextfield"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/otpTextfield"
+        app:layout_constraintTop_toTopOf="@+id/otpTextfield" />
+
+    <EditText
+        android:id="@+id/otpTextfield"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="enter Otp"
+        android:textColor="@color/black"
+        app:hintTextColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/reqBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userPhoneNumber" />
+
+    <TextView
+        android:id="@+id/userSendOtp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send OTP"
+        android:textColor="#FF5733"
+        app:layout_constraintBottom_toBottomOf="@+id/userPhoneNumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/userPhoneNumber"
+        app:layout_constraintTop_toTopOf="@+id/userPhoneNumber" />
+
+    <ProgressBar
+        android:id="@+id/sendotpProgressbar"
+        android:visibility="invisible"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/userPhoneNumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/userPhoneNumber"
+        app:layout_constraintTop_toTopOf="@+id/userPhoneNumber" />
+
+    <EditText
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="name"
+        android:inputType="text"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/userPhoneNumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/reqBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#D21312"
+        android:text="make request"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/otpTextfield" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please Verify Yourself"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/userName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

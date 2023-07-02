@@ -14,6 +14,7 @@ data class Donor(
     val gender: String? = "",
     val altmobileNo: String? = "",
     val hasChronicDisease: String? = "",
+    val is_18_Plus_And_Weight_More_Than_50kg:String? = "",
     val lastDonatedOn:String? = ""
 )
 

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                android:textAlignment="gravity"
+                app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/nameField"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name :" />
+
+                <TextView
+                    android:id="@+id/contactField"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="contact :"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="0dp" />
+
+                <TextView
+                    android:id="@+id/altNUmber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="alternate no.:" />
+
+                <TextView
+                    android:id="@+id/emailField"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email :" />
+
+                <TextView
+                    android:id="@+id/DesignationField"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Occupation :" />
+
+                <TextView
+                    android:id="@+id/year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="City :" />
+
+                <TextView
+                    android:id="@+id/lastDonatedOn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="last donated:" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/callBtn"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5">
+
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/nameTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kshitiz Agarwal" />
+
+                <TextView
+                    android:id="@+id/mobileTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7017946250" />
+
+
+                <TextView
+                    android:id="@+id/alternateTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9458209666" />
+
+                <TextView
+                    android:id="@+id/emailTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kshitizagarwal1710@gmail.com" />
+
+                <TextView
+                    android:id="@+id/occupationTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="student" />
+
+                <TextView
+                    android:id="@+id/cityTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Agra" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/lastDonatedTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Not yet Donated" />
+
+
+                    <Button
+                        android:id="@+id/setDateBtn"
+                        android:layout_width="65dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#D21312"
+                        android:padding="0dp"
+                        android:paddingEnd="2dp"
+
+                        android:text="Set date"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10dp" />
+
+                    </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/callBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/call"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
