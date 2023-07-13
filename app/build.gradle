@@ -43,6 +43,8 @@ android {
 dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx:22.0.0'
     implementation 'com.google.firebase:firebase-appcheck-ktx:17.0.1'
+    implementation 'com.google.firebase:firebase-storage-ktx:20.2.1'
+//    implementation 'com.google.firebase:firebase-storage-ktx:20.1.0'
     def lifecycle_version = "2.6.1"
 
 

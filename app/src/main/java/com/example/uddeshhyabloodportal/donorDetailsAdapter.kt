@@ -83,15 +83,11 @@ class donorDetailsAdapter(private val donorDetails: ArrayList<Donor?>) :
             holder.callBtn.context.startActivity(intent)
         }
     }
-//
-//    private fun updateLabel(myCalender: Calendar) {
-//
-//
-//    }
 
     override fun getItemCount(): Int {
         return donorDetails.size
     }
+
 
 
     class myViewHolder(donorView: View) : RecyclerView.ViewHolder(donorView) {

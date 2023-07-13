@@ -7,42 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".SearchResults">
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/nameTv"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="Hello World!"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="0.502"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:layout_constraintVertical_bias="0.271" />-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/emailTv"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="Hello World!"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/mobileTv"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="Hello World!"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="0.502"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:layout_constraintVertical_bias="0.728" />-->
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/donorList"
+        android:id="@+id/donorListRV"
         android:layout_width="match_parent"
         android:layout_height="550dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -57,7 +23,7 @@
         android:id="@+id/imageView3"
         android:layout_width="331dp"
         android:layout_height="151dp"
-        app:layout_constraintBottom_toTopOf="@+id/donorList"
+        app:layout_constraintBottom_toTopOf="@+id/donorListRV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

@@ -289,7 +289,6 @@ class donorRegistration : AppCompatActivity() {
         binding.registerButton.setOnClickListener {
 
             FirebaseAuth.getInstance().currentUser?.delete()
-            Log.d("qwe", "test 1")
             val fullname = binding.fullName.text.toString()
             val occupationSpinner = binding.inputFieldSpinner.text.toString()
             val age = binding.Age.text.toString()

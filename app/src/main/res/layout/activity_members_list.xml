@@ -25,13 +25,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/memberList"
-        android:layout_width="406dp"
-        android:layout_height="650dp"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:context=".membersList"
         tools:listitem="@layout/activity_uddeshya_member_to_contact" />
 </androidx.constraintlayout.widget.ConstraintLayout>
