@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="30dp"
+    android:backgroundTint="@color/white">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:text="contact person name :"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:text="contact person no :"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:text="patient age :"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:text="hospital name :"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:text="requirement :"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:text="other info :"
+            android:layout_height="wrap_content"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/maangnewala"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kshitiz agarwal" />
+
+        <TextView
+            android:id="@+id/maangnewalanumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7017946250" />
+    <TextView
+        android:id="@+id/patAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="69" />
+
+    <TextView
+        android:id="@+id/hospName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AIIMS" />
+ <TextView
+        android:id="@+id/req"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="B+" />
+        <TextView
+            android:id="@+id/otherTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="others" />
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
