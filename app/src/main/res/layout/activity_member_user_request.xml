@@ -6,33 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".member_user_request">
 
-    <!--        <EditText-->
-    <!--            android:id="@+id/memberEmail"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:ems="10"-->
-    <!--            android:hint="email"-->
-    <!--            android:inputType="text"-->
-    <!--            tools:layout_editor_absoluteX="97dp"-->
-    <!--            tools:layout_editor_absoluteY="280dp" />-->
-
-    <!--        <EditText-->
-    <!--            android:id="@+id/memberPassword"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:ems="10"-->
-    <!--            android:hint="password"-->
-    <!--            android:inputType="textPassword"-->
-    <!--            tools:layout_editor_absoluteX="97dp"-->
-    <!--            tools:layout_editor_absoluteY="425dp" />-->
-
-    <!--        <Button-->
-    <!--            android:id="@+id/memberLogin"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:text="Button"-->
-    <!--            tools:layout_editor_absoluteX="160dp"-->
-    <!--            tools:layout_editor_absoluteY="549dp" />-->
 
     <ImageView
         android:id="@+id/imageView4"

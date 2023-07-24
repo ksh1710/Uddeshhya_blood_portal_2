@@ -68,4 +68,22 @@
         <item>Ghaziabad</item>
         <item>Lucknow</item>
     </string-array>
+
+    <string-array name="requirementArray">
+        <item>A+</item>
+        <item>B+</item>
+        <item>O+</item>
+        <item>AB+</item>
+        <item>A-</item>
+        <item>B-</item>
+        <item>O-</item>
+        <item>AB-</item>
+        <item>platelets</item>
+        <item>any</item>
+    </string-array>
+
+    <string-array name="statusArray">
+        <item>Fulfilled</item>
+        <item>pending</item>
+    </string-array>
 </resources>

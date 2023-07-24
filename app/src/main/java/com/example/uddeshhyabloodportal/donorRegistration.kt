@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.uddeshhyabloodportal.databinding.ActivityDonorRegistrationBinding
 import com.example.uddeshhyabloodportal.models.Donor
+import com.example.uddeshhyabloodportal.models.customDialog
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -40,7 +41,7 @@ class donorRegistration : AppCompatActivity() {
     lateinit var OTP: String
     private lateinit var auth: FirebaseAuth
     final val fauth = FirebaseAuth.getInstance().currentUser
-
+val loading = customDialog(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDonorRegistrationBinding.inflate(layoutInflater)
@@ -328,6 +329,7 @@ class donorRegistration : AppCompatActivity() {
             } else if (binding.mobileVerifyOtp.text != "Verified") {
                 Toast.makeText(this, "verify mobile first", Toast.LENGTH_SHORT).show()
             } else {
+                loading.dialogRunning()
 //                var flag  = true
                 FirebaseDatabase.getInstance().getReference("BloodDonors").child(bloodgroup)
                     .addValueEventListener(
@@ -373,14 +375,17 @@ class donorRegistration : AppCompatActivity() {
                                             binding.otpTextfield.text.clear()
                                             binding.chronicCB.isSelected = false
                                             binding.AgeWeightCheck.isSelected = false
+                                            loading.dialogClose()
                                             Toast.makeText(
                                                 this@donorRegistration,
                                                 "Successfully Registered",
                                                 Toast.LENGTH_SHORT
                                             ).show()
+
                                             finish()
 //                                            flag = false
                                         }.addOnFailureListener {
+                                            loading.dialogClose()
                                             Toast.makeText(
                                                 this@donorRegistration,
                                                 "error",

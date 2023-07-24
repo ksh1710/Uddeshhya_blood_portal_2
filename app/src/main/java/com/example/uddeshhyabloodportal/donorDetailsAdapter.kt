@@ -43,7 +43,6 @@ class donorDetailsAdapter(private val donorDetails: ArrayList<Donor?>) :
 
 
 
-//        val context: Context
         holder.setDateBtn.setOnClickListener {
 
             val myCalender = Calendar.getInstance()
@@ -51,7 +50,6 @@ class donorDetailsAdapter(private val donorDetails: ArrayList<Donor?>) :
                 myCalender.set(Calendar.YEAR, year)
                 myCalender.set(Calendar.MONTH, month)
                 myCalender.set(Calendar.DAY_OF_MONTH, day)
-//            updateLabel(myCalender)
                 val myFormat = "dd-MM-yyyy"
                 val sdf = SimpleDateFormat(myFormat, Locale.UK)
                 val lastDonatedOn = sdf.format(myCalender.time)

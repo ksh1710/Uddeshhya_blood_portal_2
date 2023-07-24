@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@color/white"
+    android:layout_marginBottom="10dp"
     android:backgroundTint="@color/white"
     android:layout_height="wrap_content">
 <LinearLayout
@@ -31,6 +32,7 @@
 <ImageView
     android:layout_width="35dp"
     android:id="@+id/imgUPDOWN"
+    android:layout_marginEnd="5dp"
     android:src="@drawable/arrowdown"
     android:background="@color/white"
     android:layout_height="40dp">

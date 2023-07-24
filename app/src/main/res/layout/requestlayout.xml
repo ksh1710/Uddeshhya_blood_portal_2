@@ -1,99 +1,285 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="30dp"
     android:backgroundTint="@color/white">
 
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:orientation="horizontal">-->
+
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:layout_marginStart="10dp"-->
+    <!--            android:orientation="vertical">-->
+
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:layout_width="match_parent"-->
+
+    <!--        android:layout_height="match_parent">-->
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:orientation="horizontal"
-        android:layout_height="match_parent">
-
-
-    <LinearLayout
-        android:layout_marginStart="10dp"
-        android:layout_width="wrap_content"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:textColor="@color/black"
-            android:text="contact person name :"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:textColor="@color/black"
-            android:text="contact person no :"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:textColor="@color/black"
-            android:text="patient age :"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:textColor="@color/black"
-            android:text="hospital name :"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:textColor="@color/black"
-            android:text="requirement :"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:textColor="@color/black"
-            android:text="other info :"
-            android:layout_height="wrap_content"/>
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginStart="10dp"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/maangnewala"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="kshitiz agarwal" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/maangnewalanumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="7017946250" />
-    <TextView
-        android:id="@+id/patAge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="69" />
 
-    <TextView
-        android:id="@+id/hospName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="AIIMS" />
- <TextView
-        android:id="@+id/req"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="B+" />
-        <TextView
-            android:id="@+id/otherTV"
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_marginEnd="10dp"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content"
+                android:text="contact person name :"
+                android:textColor="@color/black"
+                tools:layout_editor_absoluteX="3dp"
+                tools:layout_editor_absoluteY="15dp" />
+
+            <TextView
+                android:id="@+id/maangnewala"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="kshitiz agarwal"
+                tools:layout_editor_absoluteX="142dp"
+                tools:layout_editor_absoluteY="15dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="others" />
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="contact person no :"
+                android:textColor="@color/black"
+                tools:layout_editor_absoluteX="3dp"
+                tools:layout_editor_absoluteY="50dp" />
+
+            <TextView
+                android:id="@+id/maangnewalanumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:text="7017946250"
+                tools:layout_editor_absoluteX="139dp"
+                tools:layout_editor_absoluteY="50dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="patient age :"
+                android:textColor="@color/black"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                tools:layout_editor_absoluteX="3dp"
+                tools:layout_editor_absoluteY="85dp" />
+
+            <TextView
+                android:id="@+id/patAge"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_height="wrap_content"
+                android:text="69"
+                tools:layout_editor_absoluteX="141dp"
+                tools:layout_editor_absoluteY="85dp" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="hospital name :"
+                android:textColor="@color/black"
+                tools:layout_editor_absoluteX="3dp"
+                tools:layout_editor_absoluteY="119dp" />
+
+            <TextView
+                android:id="@+id/hospName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AIIMS"
+                android:layout_marginStart="42dp"
+                tools:layout_editor_absoluteX="140dp"
+                tools:layout_editor_absoluteY="119dp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="requirement :"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/black"
+                tools:layout_editor_absoluteX="3dp"
+                tools:layout_editor_absoluteY="154dp" />
+
+            <TextView
+                android:id="@+id/req"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="53dp"
+
+                android:text="B+"
+                tools:layout_editor_absoluteX="144dp"
+                tools:layout_editor_absoluteY="154dp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+
+                android:text="other info :"
+                android:textColor="@color/black"
+                tools:layout_editor_absoluteX="3dp"
+                tools:layout_editor_absoluteY="189dp" />
+
+            <TextView
+                android:id="@+id/otherTV"
+                android:layout_width="95dp"
+                android:layout_marginStart="68dp"
+                android:layout_marginEnd="5dp"
+                android:layout_height="wrap_content"
+                android:lineBreakWordStyle="phrase"
+                android:text="others "
+                tools:layout_editor_absoluteX="103dp"
+                tools:layout_editor_absoluteY="189dp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status :"
+                android:textColor="@color/black"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                tools:layout_editor_absoluteX="3dp"
+                tools:layout_editor_absoluteY="223dp" />
+
+            <TextView
+                android:id="@+id/requestStatus"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="88dp"
+
+                android:text="Pending"
+                tools:layout_editor_absoluteX="179dp"
+                tools:layout_editor_absoluteY="223dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Attachment :"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/black"
+                android:layout_marginEnd="10dp"
+
+                tools:layout_editor_absoluteX="3dp"
+                tools:layout_editor_absoluteY="258dp" />
+
+
+            <ImageView
+                android:id="@+id/fetchedImg"
+                android:layout_width="50dp"
+                android:layout_marginStart="56dp"
+                android:layout_height="50dp"
+                android:src="@drawable/uddeshhya"
+                tools:layout_editor_absoluteX="169dp"
+                tools:layout_editor_absoluteY="243dp" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
-    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_gravity="right|center"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/callReqBtn"
+            android:layout_width="40dp"
+            android:layout_marginBottom="60dp"
+            android:layout_gravity="center"
+            android:layout_height="40dp"
+            android:src="@drawable/call"
+            tools:layout_editor_absoluteX="355dp"
+            tools:layout_editor_absoluteY="108dp" />
+
+        <Button
+            android:id="@+id/requestStatusButton"
+            android:layout_width="110dp"
+            android:layout_height="37dp"
+            android:backgroundTint="#D21312"
+            android:text="Change Status"
+            android:layout_marginEnd="10dp"
+            android:padding="0dp"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            tools:layout_editor_absoluteX="275dp"
+            tools:layout_editor_absoluteY="256dp" />
+
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

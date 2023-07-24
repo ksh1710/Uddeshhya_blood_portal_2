@@ -1,5 +1,6 @@
 package com.example.uddeshhyabloodportal
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -31,5 +32,14 @@ class ActiveRequests : AppCompatActivity() {
         reqRecyclerView = binding.reqRV
         reqRecyclerView.layoutManager = LinearLayoutManager(this)
         reqRecyclerView.adapter = activeReqAdapter(reqArraylist)
+    }
+
+
+    @SuppressLint("NotifyDataSetChanged")
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        super.onBackPressed()
+        reqArraylist.clear()
+        reqRecyclerView.adapter?.notifyDataSetChanged()
     }
 }

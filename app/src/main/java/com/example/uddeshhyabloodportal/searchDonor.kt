@@ -50,12 +50,8 @@ class searchDonor : AppCompatActivity() {
 
 
         binding.activeReqBtn.setOnClickListener {
-            val bloodgrouptext: String = binding.bloodGrpSpinner.text.toString()
-            if (bloodgrouptext.isNotEmpty()) {
-                readActiveRequests(bloodgrouptext)
-            } else {
-                Toast.makeText(this, "enter value", Toast.LENGTH_SHORT).show()
-            }
+            val intent = Intent(this,active_req_type::class.java)
+            startActivity(intent)
         }
 
 
@@ -71,38 +67,7 @@ class searchDonor : AppCompatActivity() {
         }
     }
 
-    private fun readActiveRequests(bloodgrouptext: String) {
-        database = FirebaseDatabase.getInstance().getReference("Active Blood Requests")
-        database.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.hasChild(bloodgrouptext)){
-//                    var ActiveRequestsNew : ArrayList<bloodRequest?>? = ArrayList()
-                    var active: ArrayList<bloodRequest?>? = ArrayList()
-
-                    for (i in snapshot.child(bloodgrouptext).children){
-                        val request = i.getValue(bloodRequest::class.java)
-                        active?.add(request)
-                    }
-                    val requestlist = Requests(active)
-                    val jsonReq = Gson().toJson(requestlist).toString()
-                    Log.d("check6",jsonReq)
-                    val intent2 = Intent(this@searchDonor, ActiveRequests::class.java)
-                    intent2.putExtra("jsonReq", jsonReq)
-                    startActivity(intent2)
-                }else {
-                    Toast.makeText(this@searchDonor, "No Reqeusts avaiable", Toast.LENGTH_LONG).show()
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(parent, "error in db bc", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
-
     private fun readData(bloodgrouptext: String) {
-//    private fun readData(bloodgrouptext: String) {
-//        database=FirebaseDatabase.getInstance().getReference("DonorsV2")
         database = FirebaseDatabase.getInstance().getReference("BloodDonors")
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

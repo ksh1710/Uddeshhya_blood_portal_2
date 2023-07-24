@@ -118,7 +118,8 @@
 
                 <TextView
                     android:id="@+id/emailTv"
-                    android:layout_width="wrap_content"
+                    android:lineBreakWordStyle="phrase"
+                    android:layout_width="210dp"
                     android:layout_height="wrap_content"
                     android:text="Kshitizagarwal1710@gmail.com" />
 

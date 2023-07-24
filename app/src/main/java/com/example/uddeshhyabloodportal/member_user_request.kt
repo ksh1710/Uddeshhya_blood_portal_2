@@ -31,6 +31,7 @@ class member_user_request : AppCompatActivity() {
         createReqBtn.setOnClickListener {
             val intent = Intent(this,bloodRequestWritten::class.java)
             startActivity(intent)
+            finish()
         }
 
     }

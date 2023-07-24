@@ -9,5 +9,6 @@ data class bloodRequest(
     val contactPersonName: String? = "",
     val contactPersonMobile: String? = "",
     val otherInfo: String? = "",
-    val attachments:String?=""
+    val attachments:String?="",
+    val status:String? = "Pending"
 )
