@@ -13,6 +13,7 @@ import com.example.uddeshhyabloodportal.models.Donor
 import com.example.uddeshhyabloodportal.models.Donors
 import com.example.uddeshhyabloodportal.models.Requests
 import com.example.uddeshhyabloodportal.models.bloodRequest
+import com.example.uddeshhyabloodportal.models.customDialog
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -24,7 +25,7 @@ import java.io.Console
 class searchDonor : AppCompatActivity() {
     lateinit var binding: ActivitySearchDonor2Binding
     lateinit var database: DatabaseReference
-
+    val loading = customDialog(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +51,7 @@ class searchDonor : AppCompatActivity() {
 
 
         binding.activeReqBtn.setOnClickListener {
-            val intent = Intent(this,active_req_type::class.java)
+            val intent = Intent(this, active_req_type::class.java)
             startActivity(intent)
         }
 
@@ -60,6 +61,7 @@ class searchDonor : AppCompatActivity() {
         binding.searchBtn.setOnClickListener {
             val bloodgrouptext: String = binding.bloodGrpSpinner.text.toString()
             if (bloodgrouptext.isNotEmpty()) {
+                loading.dialogRunning()
                 readData(bloodgrouptext)
             } else {
                 Toast.makeText(this, "enter value", Toast.LENGTH_SHORT).show()
@@ -84,9 +86,14 @@ class searchDonor : AppCompatActivity() {
                     val intent = Intent(this@searchDonor, SearchResults::class.java)
                     intent.putExtra("json", json)
                     startActivity(intent)
-
+                    loading.dialogClose()
                 } else {
-                    Toast.makeText(this@searchDonor, "No Donor of this blood group available", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        this@searchDonor,
+                        "No Donor of this blood group available",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    loading.dialogClose()
                 }
             }
 

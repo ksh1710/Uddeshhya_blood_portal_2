@@ -1,36 +1,34 @@
 package com.example.uddeshhyabloodportal
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
-import com.example.uddeshhyabloodportal.databinding.ActivityMemberUserRequestBinding
+import com.example.uddeshhyabloodportal.databinding.ActivityAboutUsBinding
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
-import com.google.firebase.auth.FirebaseAuth
 
-class member_user_request : AppCompatActivity() {
-    private lateinit var binding: ActivityMemberUserRequestBinding
-    lateinit var reqBloodPageAdView:AdView
+class AboutUs : AppCompatActivity() {
 
-
-    @SuppressLint("UseCompatLoadingForDrawables")
+    lateinit var aboutUsAdView : AdView
+    private lateinit var binding:ActivityAboutUsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMemberUserRequestBinding.inflate(layoutInflater)
+        binding= ActivityAboutUsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
         MobileAds.initialize(this) {}
 
-        reqBloodPageAdView = findViewById(R.id.requestBloodPageAd)
+        aboutUsAdView = findViewById(R.id.aboutUsAd)
         val adRequest = com.google.android.gms.ads.AdRequest.Builder().build()
-        reqBloodPageAdView.loadAd(adRequest)
+        aboutUsAdView.loadAd(adRequest)
 
-        reqBloodPageAdView.adListener = object: AdListener() {
+        aboutUsAdView.adListener = object: AdListener() {
             override fun onAdClicked() {
                 super.onAdClicked()
                 // Code to be executed when the user clicks on an ad.
@@ -43,7 +41,7 @@ class member_user_request : AppCompatActivity() {
 
             override fun onAdFailedToLoad(adError : LoadAdError) {
                 super.onAdFailedToLoad(adError)
-                reqBloodPageAdView.loadAd(adRequest)
+                aboutUsAdView.loadAd(adRequest)
                 // Code to be executed when an ad request fails.
             }
 
@@ -66,19 +64,17 @@ class member_user_request : AppCompatActivity() {
 
 
 
-        val bloodReqBtn = binding.bloodReqBtn
-        val createReqBtn = binding.createRequest
-
-        bloodReqBtn.setOnClickListener {
-            val intent = Intent(this, membersList::class.java)
+        binding.website.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.uddeshhya.org/"))
             startActivity(intent)
         }
-
-        createReqBtn.setOnClickListener {
-            val intent = Intent(this,bloodRequestWritten::class.java)
+        binding.instagram.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/uddeshhya_/"))
             startActivity(intent)
-            finish()
         }
-
+        binding.privacyPolicy.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://sites.google.com/view/blooxconnect-privacy-policy/home"))
+            startActivity(intent)
+        }
     }
 }

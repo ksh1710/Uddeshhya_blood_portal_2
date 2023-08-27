@@ -2,20 +2,72 @@ package com.example.uddeshhyabloodportal
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.uddeshhyabloodportal.databinding.ActivityFaqsBinding
 import com.example.uddeshhyabloodportal.models.faqList
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.MobileAds
 
 class faqs : AppCompatActivity() {
 
     lateinit var binding: ActivityFaqsBinding
     lateinit var faqRv:RecyclerView
+    lateinit var faqAdView : AdView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         val FaqsList = mutableListOf<faqList>()
         binding= ActivityFaqsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        MobileAds.initialize(this) {}
+
+        faqAdView = findViewById(R.id.faqAd)
+        val adRequest = com.google.android.gms.ads.AdRequest.Builder().build()
+        faqAdView.loadAd(adRequest)
+
+        faqAdView.adListener = object: AdListener() {
+            override fun onAdClicked() {
+                super.onAdClicked()
+                // Code to be executed when the user clicks on an ad.
+            }
+
+            override fun onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+            }
+
+            override fun onAdFailedToLoad(adError : LoadAdError) {
+                super.onAdFailedToLoad(adError)
+                faqAdView.loadAd(adRequest)
+                // Code to be executed when an ad request fails.
+            }
+
+            override fun onAdImpression() {
+                // Code to be executed when an impression is recorded
+                // for an ad.
+            }
+
+            override fun onAdLoaded() {
+                super.onAdLoaded()
+                // Code to be executed when an ad finishes loading.
+            }
+
+            override fun onAdOpened() {
+                super.onAdOpened()
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+        }
+
+
+
 
         FaqsList.add(faqList("Q1: How much blood is taken in one donation?","Ans: For a whole blood donation, approximately 0.5 L of blood is collected"))
         FaqsList.add(faqList("Q2: Are the history questions necessary every time I donate?","Ans: Yes, since this helps to ensure the safest possible blood supply. All donors must be asked the screening questions at each donation. Both AABB and FDA regulations specifically require that all blood donors complete the donor history questionnaire on the day of donation and prior to donating."))

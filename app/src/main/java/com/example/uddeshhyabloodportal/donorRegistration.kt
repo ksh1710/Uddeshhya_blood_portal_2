@@ -11,6 +11,10 @@ import androidx.core.view.isVisible
 import com.example.uddeshhyabloodportal.databinding.ActivityDonorRegistrationBinding
 import com.example.uddeshhyabloodportal.models.Donor
 import com.example.uddeshhyabloodportal.models.customDialog
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.MobileAds
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -39,6 +43,7 @@ class donorRegistration : AppCompatActivity() {
     lateinit var database: DatabaseReference
     lateinit var credential: PhoneAuthCredential
     lateinit var OTP: String
+    lateinit var donorRegistrationAdView: AdView
     private lateinit var auth: FirebaseAuth
     final val fauth = FirebaseAuth.getInstance().currentUser
 val loading = customDialog(this)
@@ -46,6 +51,47 @@ val loading = customDialog(this)
         super.onCreate(savedInstanceState)
         binding = ActivityDonorRegistrationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        MobileAds.initialize(this) {}
+
+        donorRegistrationAdView = findViewById(R.id.donorRegistrationAd)
+        val adRequest = com.google.android.gms.ads.AdRequest.Builder().build()
+        donorRegistrationAdView.loadAd(adRequest)
+
+        donorRegistrationAdView.adListener = object: AdListener() {
+            override fun onAdClicked() {
+                super.onAdClicked()
+                // Code to be executed when the user clicks on an ad.
+            }
+
+            override fun onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+            }
+
+            override fun onAdFailedToLoad(adError : LoadAdError) {
+                super.onAdFailedToLoad(adError)
+                donorRegistrationAdView.loadAd(adRequest)
+                // Code to be executed when an ad request fails.
+            }
+
+            override fun onAdImpression() {
+                // Code to be executed when an impression is recorded
+                // for an ad.
+            }
+
+            override fun onAdLoaded() {
+                super.onAdLoaded()
+                // Code to be executed when an ad finishes loading.
+            }
+
+            override fun onAdOpened() {
+                super.onAdOpened()
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+        }
+
 
 
         auth = Firebase.auth
@@ -86,9 +132,10 @@ val loading = customDialog(this)
                             Toast.LENGTH_SHORT
                         )
                             .show()
+                        Log.e("idk",task.exception.toString())
                     }
                 }.addOnFailureListener {
-                    Toast.makeText(this, "an error occured", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
                     binding.mobileVerifyOtp.isVisible = true
                     binding.verifyotpProgressBar.isVisible = false
 

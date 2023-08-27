@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutUs">
+
+    <ImageView
+        android:id="@+id/web"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/ig"
+        app:layout_constraintEnd_toStartOf="@+id/website"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:srcCompat="@drawable/website" />
+
+    <ImageView
+        android:id="@+id/ig"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/privacy"
+        app:layout_constraintEnd_toStartOf="@+id/instagram"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/web"
+        app:srcCompat="@drawable/instagram" />
+
+    <ImageView
+        android:id="@+id/privacy"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ig"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/ig"
+        app:layout_constraintTop_toBottomOf="@+id/ig"
+        app:srcCompat="@drawable/privacy" />
+
+    <TextView
+        android:id="@+id/website"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Website"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/instagram"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/web"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/instagram"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Instagram"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/privacy_policy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ig"
+        app:layout_constraintTop_toBottomOf="@+id/website" />
+
+    <TextView
+        android:id="@+id/privacy_policy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Privacy-Policy"
+        android:textSize="30dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/instagram"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/instagram"
+        app:layout_constraintTop_toBottomOf="@+id/instagram" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/aboutUsAd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

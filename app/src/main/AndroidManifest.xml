@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Material3.Dark.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".AboutUs"
+            android:exported="false" />
+        <activity
+            android:name=".aboutUs"
+            android:exported="false" />
+        <activity
             android:name=".memberPreviewImage"
             android:exported="false" />
         <activity
@@ -78,6 +84,10 @@
         <activity
             android:name=".ActiveRequests"
             android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
     </application>
 
 </manifest>

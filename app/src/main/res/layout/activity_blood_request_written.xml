@@ -49,19 +49,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
-            <TextView
-                android:id="@+id/textView4"
-                android:textColor="#888888"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="Requirement:"
-                app:layout_constraintBottom_toTopOf="@+id/requirementsIP"
-                app:layout_constraintEnd_toEndOf="@+id/requirementsIP"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/filldetails" />
-
             <!--            <EditText-->
             <!--                android:id="@+id/requirement"-->
             <!--                android:layout_width="wrap_content"-->
@@ -76,6 +63,19 @@
             <!--                app:layout_constraintHorizontal_bias="0.5"-->
             <!--                app:layout_constraintStart_toStartOf="parent"-->
             <!--                app:layout_constraintTop_toBottomOf="@+id/textView4" />-->
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Requirement:"
+                android:textColor="#888888"
+                app:layout_constraintBottom_toTopOf="@+id/requirementsIP"
+                app:layout_constraintEnd_toEndOf="@+id/requirementsIP"
+                app:layout_constraintHorizontal_bias="0.395"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/filldetails" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/requirementsIP"
@@ -115,7 +115,7 @@
                 android:textColor="#888888"
                 app:layout_constraintBottom_toTopOf="@+id/patientAge"
                 app:layout_constraintEnd_toEndOf="@+id/patientAge"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.446"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/requirementsIP" />
 
@@ -141,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:textColor="#888888"
-                android:text="Hopspital name"
+                android:text="Hospital name :"
                 app:layout_constraintBottom_toTopOf="@+id/HospitalName"
                 app:layout_constraintEnd_toEndOf="@+id/HospitalName"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -169,11 +169,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="Contact person name"
-                app:layout_constraintBottom_toTopOf="@+id/contactPerson"
+                android:text="Contact person name :"
                 android:textColor="#888888"
+                app:layout_constraintBottom_toTopOf="@+id/contactPerson"
                 app:layout_constraintEnd_toEndOf="@+id/contactPerson"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.594"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/HospitalName" />
 
@@ -199,7 +199,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="Contact person mobile no"
+                android:text="Contact person mobile no :"
                 app:layout_constraintBottom_toTopOf="@+id/userPhoneNumber"
                 android:textColor="#888888"
                 app:layout_constraintEnd_toEndOf="@+id/userPhoneNumber"
@@ -229,7 +229,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:textColor="#888888"
-                android:text="Other details"
+                android:text="Other details :"
                 app:layout_constraintBottom_toTopOf="@+id/otherInfo"
                 app:layout_constraintEnd_toEndOf="@+id/otherInfo"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -302,12 +302,23 @@
                 android:backgroundTint="#D21312"
                 android:text="Submit"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/createBloodReqformAD"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
+                android:layout_marginBottom="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/attachmentPreview" />
 
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/createBloodReqformAD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:adSize="BANNER"
+                app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

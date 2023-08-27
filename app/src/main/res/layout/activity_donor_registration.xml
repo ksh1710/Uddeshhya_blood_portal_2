@@ -406,7 +406,7 @@
                 android:id="@+id/registerButton"
                 android:layout_width="137dp"
                 android:layout_height="44dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="70dp"
                 android:backgroundTint="#D21312"
                 android:text="Register"
                 android:textColor="@color/white"
@@ -415,6 +415,17 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/AgeWeightCheck" />
+
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/donorRegistrationAd"
+                android:layout_width="wrap_content"
+                app:adSize="BANNER"
+                app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

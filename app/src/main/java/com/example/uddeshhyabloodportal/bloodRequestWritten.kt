@@ -25,6 +25,10 @@ import com.example.uddeshhyabloodportal.databinding.ActivityBloodRequestWrittenB
 import com.example.uddeshhyabloodportal.databinding.LoadingDialogBinding
 import com.example.uddeshhyabloodportal.models.bloodRequest
 import com.example.uddeshhyabloodportal.models.customDialog
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.MobileAds
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -39,8 +43,11 @@ class bloodRequestWritten : AppCompatActivity() {
     private var imgName: String? = null
     private lateinit var binding: ActivityBloodRequestWrittenBinding
     lateinit var database: DatabaseReference
+    lateinit var createBloodReqformAdView: AdView
     private var imgUri: Uri? = null
     val loading = customDialog(this)
+
+
     private val resLauncher = registerForActivityResult(
         ActivityResultContracts.GetContent()
     ) {
@@ -50,11 +57,51 @@ class bloodRequestWritten : AppCompatActivity() {
         imgName = getFileName(applicationContext, it!!)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBloodRequestWrittenBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        MobileAds.initialize(this) {}
+
+        createBloodReqformAdView = findViewById(R.id.createBloodReqformAD)
+        val adRequest = com.google.android.gms.ads.AdRequest.Builder().build()
+        createBloodReqformAdView.loadAd(adRequest)
+
+        createBloodReqformAdView.adListener = object: AdListener() {
+            override fun onAdClicked() {
+                super.onAdClicked()
+                // Code to be executed when the user clicks on an ad.
+            }
+
+            override fun onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+            }
+
+            override fun onAdFailedToLoad(adError : LoadAdError) {
+                super.onAdFailedToLoad(adError)
+                createBloodReqformAdView .loadAd(adRequest)
+                // Code to be executed when an ad request fails.
+            }
+
+            override fun onAdImpression() {
+                // Code to be executed when an impression is recorded
+                // for an ad.
+            }
+
+            override fun onAdLoaded() {
+                super.onAdLoaded()
+                // Code to be executed when an ad finishes loading.
+            }
+
+            override fun onAdOpened() {
+                super.onAdOpened()
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+        }
+
 
 
         val reqArray = resources.getStringArray(R.array.requirementArray)
@@ -65,18 +112,11 @@ class bloodRequestWritten : AppCompatActivity() {
         binding.attachmentPreview.setOnClickListener {
 
             val selImgUri = imgUri!!
-//            val pt = binding.attachmentPreview.drawable
-//            intent.putExtra("im",\)
-//            binding.attachmentPreview.isDrawingCacheEnabled = true
-//            val b: Bitmap = binding.attachmentPreview.getDrawingCache()
-            val i = Intent(this, imagePreview::class.java)
+         val i = Intent(this, imagePreview::class.java)
             Log.d("finalfksucc", selImgUri.toString())
-//            i.putExtra("Bitmap", b)
-            i.setData(selImgUri)
+            i.data=selImgUri
             startActivity(i)
-//val intent = Intent(this,imagePreview::class.java)
-//            intent.putExtra("image",binding.attachmentPreview.imageAlpha)
-//            startActivity(intent)
+
         }
 
         binding.attachmentsBtn.setOnClickListener {
@@ -85,6 +125,7 @@ class bloodRequestWritten : AppCompatActivity() {
 
 
         binding.submitBtn.setOnClickListener {
+            Log.d("idk","smthng")
             validateData()
         }
 
@@ -100,24 +141,27 @@ class bloodRequestWritten : AppCompatActivity() {
         ) {
             Toast.makeText(this, "please enter all fields", Toast.LENGTH_SHORT).show()
         } else {
+            Log.d("idk","smthng 2")
             loading.dialogRunning()
             uploadImg()
         }
     }
 
     private fun uploadImg() {
-
+        Log.d("idk","kuch toh")
         val storageRef = FirebaseStorage.getInstance().getReference("Report_Attachments")
             .child(FirebaseAuth.getInstance().currentUser!!.uid).child(imgName.toString())
-
-
         storageRef.putFile(imgUri!!).addOnSuccessListener {
+            Log.d("idk",it.toString())
             storageRef.downloadUrl.addOnSuccessListener {
+                Log.d("idk",it.toString())
                 storeDate(it)
             }.addOnFailureListener {
+                Log.d("idk",it.message.toString())
                 Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
             }
         }.addOnFailureListener {
+            Log.d("idk",it.message.toString())
             Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
         }
     }
@@ -165,7 +209,8 @@ class bloodRequestWritten : AppCompatActivity() {
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }.addOnFailureListener {
-                                loading.dialogRunning()
+                                Log.d("idk",it.message.toString())
+                                loading.dialogClose()
                                 Toast.makeText(
                                     this@bloodRequestWritten,
                                     "error",

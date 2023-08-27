@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.example.uddeshhyabloodportal.databinding.ActivityActiveReqTypeBinding
 import com.example.uddeshhyabloodportal.models.Requests
 import com.example.uddeshhyabloodportal.models.bloodRequest
+import com.example.uddeshhyabloodportal.models.customDialog
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -19,11 +20,12 @@ import com.google.gson.Gson
 class active_req_type : AppCompatActivity() {
     private lateinit var binding: ActivityActiveReqTypeBinding
     lateinit var database: DatabaseReference
+    val loading = customDialog(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityActiveReqTypeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         val reqArray = resources.getStringArray(R.array.requirementArray)
         val reqTyoeAdapter = ArrayAdapter(this, R.layout.spinner_item, reqArray)
         binding.reqType.setAdapter(reqTyoeAdapter)
@@ -32,6 +34,7 @@ class active_req_type : AppCompatActivity() {
         binding.reqWalaBtn.setOnClickListener {
             val bloodgrouptext: String = binding.reqType.text.toString()
             if (bloodgrouptext.isNotEmpty()) {
+                loading.dialogRunning()
                 readActiveRequests(bloodgrouptext)
             } else {
                 Toast.makeText(this, "enter value", Toast.LENGTH_SHORT).show()
@@ -44,7 +47,6 @@ class active_req_type : AppCompatActivity() {
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.hasChild(bloodgrouptext)){
-//                    var ActiveRequestsNew : ArrayList<bloodRequest?>? = ArrayList()
                     var active: ArrayList<bloodRequest?>? = ArrayList()
 
                     for (i in snapshot.child(bloodgrouptext).children){
@@ -53,12 +55,13 @@ class active_req_type : AppCompatActivity() {
                     }
                     val requestlist = Requests(active)
                     val jsonReq = Gson().toJson(requestlist).toString()
-                    Log.d("check6",jsonReq)
                     val intent2 = Intent(this@active_req_type, ActiveRequests::class.java)
                     intent2.putExtra("jsonReq", jsonReq)
                     startActivity(intent2)
+                    loading.dialogClose()
                 }else {
                     Toast.makeText(this@active_req_type, "No Reqeusts avaiable", Toast.LENGTH_LONG).show()
+                    loading.dialogClose()
                 }
             }
 

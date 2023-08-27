@@ -9,6 +9,10 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.uddeshhyabloodportal.databinding.ActivityVerifyUrselfFirstBinding
 import com.example.uddeshhyabloodportal.models.bloodReqUser
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.MobileAds
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.FirebaseAuth
@@ -24,11 +28,53 @@ class verify_urself_first : AppCompatActivity() {
     lateinit var binding: ActivityVerifyUrselfFirstBinding
     lateinit var database: DatabaseReference
     lateinit var OTP: String
+    lateinit var verifyUrselfAdView: AdView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVerifyUrselfFirstBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        MobileAds.initialize(this) {}
+
+        verifyUrselfAdView = findViewById(R.id.verifyUrselfAd)
+        val adRequest = com.google.android.gms.ads.AdRequest.Builder().build()
+        verifyUrselfAdView.loadAd(adRequest)
+
+        verifyUrselfAdView.adListener = object: AdListener() {
+            override fun onAdClicked() {
+                super.onAdClicked()
+                // Code to be executed when the user clicks on an ad.
+            }
+
+            override fun onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+            }
+
+            override fun onAdFailedToLoad(adError : LoadAdError) {
+                super.onAdFailedToLoad(adError)
+                verifyUrselfAdView.loadAd(adRequest)
+                // Code to be executed when an ad request fails.
+            }
+
+            override fun onAdImpression() {
+                // Code to be executed when an impression is recorded
+                // for an ad.
+            }
+
+            override fun onAdLoaded() {
+                super.onAdLoaded()
+                // Code to be executed when an ad finishes loading.
+            }
+
+            override fun onAdOpened() {
+                super.onAdOpened()
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+        }
+
+
 
         val sharedPref = getSharedPreferences("userPref", Context.MODE_PRIVATE)
         val userName = sharedPref.getString("name", "")

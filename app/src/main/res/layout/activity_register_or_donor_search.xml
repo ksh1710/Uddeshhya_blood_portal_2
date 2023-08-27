@@ -105,52 +105,21 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aboutTv" />
+        app:layout_constraintTop_toBottomOf="@+id/aboutTv"
+        app:layout_constraintVertical_bias="0.228" />
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/uddeshhyaText"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="UDDESHHYA"-->
-    <!--        android:textSize="25sp"-->
-    <!--        android:textColor="@color/white"-->
-    <!--        android:layout_marginLeft="25dp"-->
-    <!--        app:layout_constraintBottom_toTopOf="@+id/uddeshhyaImg"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:layout_constraintVertical_bias="0.533" />-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/textView3"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="UD"-->
-    <!--        android:textColor="@color/white"-->
-    <!--        android:textSize="25sp"-->
-
-    <!--        tools:layout_editor_absoluteX="40dp"-->
-    <!--        tools:layout_editor_absoluteY="30dp" />-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/textView4"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="DESH"-->
-    <!--        android:textColor="#D21312"-->
-    <!--        android:textSize="25sp"-->
-    <!--        tools:layout_editor_absoluteX="73dp"-->
-    <!--        tools:layout_editor_absoluteY="31dp" />-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/textView5"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-
-    <!--        android:text="HYA"-->
-    <!--        android:textColor="@color/white"-->
-    <!--        android:textSize="25sp"-->
-    <!--        tools:layout_editor_absoluteX="138dp"-->
-    <!--        tools:layout_editor_absoluteY="31dp" />-->
-
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

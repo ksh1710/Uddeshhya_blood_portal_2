@@ -34,6 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
+
     <Button
         android:id="@+id/createRequest"
         android:layout_width="300dp"
@@ -42,43 +43,42 @@
         android:text=" Create Request"
         android:textColor="@color/white"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/requestBloodPageAd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
     </Button>
 
-    <!--        <TextView-->
-    <!--            android:id="@+id/userTV"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:text="Are you a member? Login"-->
-    <!--            android:textColor="#FF0000"-->
-    <!--            android:textSize="24sp"-->
-    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--            app:layout_constraintEnd_toEndOf="parent"-->
-    <!--            app:layout_constraintHorizontal_bias="0.5"-->
-    <!--            app:layout_constraintStart_toStartOf="parent"-->
-    <!--            app:layout_constraintTop_toBottomOf="@+id/bloodReqBtn" />-->
-
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/bloodReqBtn"
         android:layout_width="55dp"
         android:layout_height="55dp"
+        android:layout_marginEnd="16dp"
         android:contentDescription="call member"
-        app:tint="#FF0000"
-        app:shapeAppearance="@style/ThemeOverlay.Material3"
-        app:srcCompat="@drawable/baseline_call_24"
         android:elevation="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:rippleColor="#F84F4F"
+        android:layout_marginTop="10dp"
         app:backgroundTint="#F4F4F4"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createRequest"
-        app:maxImageSize="25dp" />
+        app:layout_constraintVertical_bias="0.0"
+        app:maxImageSize="25dp"
+        app:rippleColor="#F84F4F"
+        app:shapeAppearance="@style/ThemeOverlay.Material3"
+        app:srcCompat="@drawable/baseline_call_24"
+        app:tint="#FF0000" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/requestBloodPageAd"
+        android:layout_width="255dp"
+        android:layout_height="47dp"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
